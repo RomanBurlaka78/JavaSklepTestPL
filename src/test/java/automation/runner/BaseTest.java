@@ -9,9 +9,12 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
+
+@Listeners({automation.listening.ListeningClass.class})
 
 abstract public class BaseTest {
     protected WebDriver driver;
