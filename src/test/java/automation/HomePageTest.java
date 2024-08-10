@@ -22,11 +22,11 @@ public class HomePageTest extends BaseTest {
 
 
     public void getTitleOfPageTest(){
-        String showTitleOfPage = new HomePage(driver)
-                .getTitleOfPage();
+        String showTitle = new HomePage(driver)
+                .showTitleOfPage();
 
 
-        Assert.assertEquals(showTitleOfPage, "Generic Shop");
+        Assert.assertEquals(showTitle, "Generic Shop");
     }
 
 
