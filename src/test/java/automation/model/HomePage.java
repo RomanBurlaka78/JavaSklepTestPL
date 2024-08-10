@@ -1,5 +1,6 @@
 package automation.model;
 
+import automation.MostWantedPageTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -42,6 +43,12 @@ public class HomePage extends BasePage {
         wait2.until(ExpectedConditions.visibilityOf(getTitle));
         getWaitForElement(getTitle,3);
         driver.findElement(accountTitle).click();
+
+    }
+    public MostWantedPage goToMostWantedPage(){
+        getMostWantedLink.click();
+
+        return new MostWantedPage(driver);
 
     }
 
