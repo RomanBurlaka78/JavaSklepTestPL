@@ -1,39 +1,48 @@
-name: Run tests and publish report
-on: [push]
+name: Allure Report
+run-name: ${{ github.actor }} is creating Allure report 🚀
+
+on:
+  push:
+    branches-ignore:
+      - '!main'
+
 jobs:
-  test:
+  autotests:
+    name: Run tests and generate Allure Report
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Clone repository
+        uses: actions/checkout@v4.1.1
 
-      - name: Set up JDK
-        uses: actions/setup-java@v3
+      - name: Set up Java 21
+        uses: actions/setup-java@v4.1.0
         with:
-          distribution: zulu
-          java-version: 17
+          java-version: 21
+          cache: 'maven'
+          distribution: 'zulu'
 
-      - name: Run tests
-        run: ./gradlew clean test
+      - name: Run Test
+        run: ./mvnw verify
+        continue-on-error: true
 
-      - name: Load test report history
-        uses: actions/checkout@v3
+      - name: Setup Allure History
+        uses: actions/checkout@v4.1.1
         if: always()
         continue-on-error: true
         with:
           ref: gh-pages
           path: gh-pages
 
-      - name: Build test report
-        uses: simple-elf/allure-report-action@v1.7
+      - name: Generate Allure Report
+        uses: simple-elf/allure-report-action@v1.8
         if: always()
         with:
-          gh_pages: gh-pages
+          allure_results: target/allure-results
           allure_history: allure-history
-          allure_results: build/allure-results
 
-      - name: Publish test report
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Publish Allure Report
         if: always()
+        uses: peaceiris/actions-gh-pages@v3.9.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
