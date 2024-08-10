@@ -15,9 +15,26 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[contains(text(), 'Generic Shop')]")
     private WebElement getTitle;
 
+    @FindBy(xpath = "//a[@href = 'https://skleptest.pl']")
+    private WebElement getShopLink;
+
+    @FindBy(xpath = "//a[@href = 'https://skleptest.pl/product-category/most-wanted/']")
+    private WebElement getMostWantedLink;
+
+    @FindBy(xpath = "/")
+    private WebElement getCategoriesLink;
+
+    @FindBy(xpath = "//a[contains(text(), 'About Us')]")
+    private WebElement getAboutUsLink;
+
+    @FindBy(xpath = "//a[contains(text(), 'Contact')]")
+    private WebElement getContactLink;
+
+    @FindBy(xpath = "//a[@href = 'https://skleptest.pl/tag/all/']")
+    private WebElement getBlogLink;
     private final By accountTitle = By.xpath(" //li[@class='top-account']/a/i");
 
-    public String getTitleOfPage() {
+    public String showTitleOfPage() {
         return getTitle.getText();
     }
 
