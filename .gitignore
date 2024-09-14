@@ -42,3 +42,7 @@ build/
 ###log##
 */log
 *.log
+###allure##
+.allure
+/allure
+*/allure

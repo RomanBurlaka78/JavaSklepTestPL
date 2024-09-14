@@ -25,7 +25,6 @@ public class HomePageTest extends BaseTest {
         String showTitle = new HomePage(driver)
                 .showTitleOfPage();
 
-
         Assert.assertEquals(showTitle, "Generic Shop");
     }
 

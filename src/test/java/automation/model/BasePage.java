@@ -41,4 +41,7 @@ abstract  class BasePage {
 
         return wait;
     }
+    public WebDriver getDriver() {
+        return driver;
+    }
 }
