@@ -1,5 +1,6 @@
 package automation.model;
 
+import automation.AccountPageTest;
 import automation.MostWantedPageTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -33,6 +34,10 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath = "//a[@href = 'https://skleptest.pl/tag/all/']")
     private WebElement getBlogLink;
+
+    @FindBy(xpath = "//a[@href = 'https://skleptest.pl/my-account/']")
+    private WebElement getAccountLink;
+
     private final By accountTitle = By.xpath(" //li[@class='top-account']/a/i");
 
     public String showTitleOfPage() {
@@ -49,8 +54,14 @@ public class HomePage extends BasePage {
         getMostWantedLink.click();
 
         return new MostWantedPage(driver);
-
     }
+
+    public AccountPage goToAccountPage() {
+        getAccountLink.click();
+
+        return new AccountPage(driver);
+    }
+
 
 
 }

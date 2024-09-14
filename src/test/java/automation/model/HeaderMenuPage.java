@@ -16,7 +16,6 @@ import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.net.http.HttpClient.newHttpClient;
 
 public class HeaderMenuPage extends BasePage {
     public HeaderMenuPage(WebDriver driver) {
@@ -83,7 +82,7 @@ public class HeaderMenuPage extends BasePage {
             }
         }
 
-        return responseResult; // Zwraca ostatni kod odpowiedzi lub 200, jeśli wszystkie linki są OK
+        return responseResult;
     }
 
     @Step("Get response from mail link")

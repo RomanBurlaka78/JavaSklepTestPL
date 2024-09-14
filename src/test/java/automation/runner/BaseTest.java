@@ -29,7 +29,6 @@ abstract public class BaseTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        getWeb();
     }
 
     public  WebDriverWait getWait2() {
